@@ -1,0 +1,62 @@
+{
+  "name": "react-pulse",
+  "version": "1.0.0",
+  "description": "A button that when clicked sends an incremental 'pulse' to a function",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack -p"
+  },
+  "author": "Peter Joseph",
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-react-jsx",
+      "transform-class-properties"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withpeterjoseph/react-pulse.git"
+  },
+  "keywords": [
+    "button",
+    "pause",
+    "pulse"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/withpeterjoseph/react-pulse/issues"
+  },
+  "homepage": "https://github.com/withpeterjoseph/react-pulse#readme",
+  "dependencies": {
+    "css-loader": "^0.28.9",
+    "file-loader": "^1.1.6",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-class-property": "^1.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "prettier-eslint": "^8.8.1"
+  }
+}
