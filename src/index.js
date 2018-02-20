@@ -11,6 +11,8 @@ class Pulse extends React.Component {
     };
 
     this.preparePulse = this.preparePulse.bind(this);
+    this.sendPulse = this.sendPulse.bind(this);
+    this.stopPulse = this.stopPulse.bind(this);
   }
 
   componentWillMount() {
@@ -26,23 +28,35 @@ class Pulse extends React.Component {
   }
 
   preparePulse() {
+    const date = new Date();
+
+    // Send function when the state changes
+    this.props.onClickFunction;
+
     if (!this.state.active) {
-      this.props.onClickFunction;
+      this.props.onChangeFunction;
     } else {
-      this.props.onClickFunction;
+      this.props.onChangeFunction;
     }
 
     this.setState({
       active: this.state.active ? false : true,
     });
+  }
 
-    // Send function when the state changes
-    this.props.onChangeFunction;
+  sendPulse() {
+    global.pulse = setInterval(() => this.props.pulseFunction, (this.props.pulseTime * 1000));
+  }
+
+  stopPulse() {
+    clearInterval(global.pulse);
   }
 
   render() {
     const { active } = this.state;
     const { defaultLabel, activeLabel, className, disabled } = this.props;
+
+    active ? this.sendPulse() : this.stopPulse(); // When state is active, call function
 
     return <button className={className} onClick={this.preparePulse} disabled={disabled}>
       {active ? activeLabel : defaultLabel }
@@ -54,7 +68,6 @@ Pulse.defaultProps = {
   defaultLabel: "Start",
   activeLabel: "Running...",
   pulseTime: 30,
-  showTimer: false,
   disabled: false
 };
 
@@ -68,7 +81,6 @@ Pulse.propTypes = {
   onChangeFunction: PropTypes.func,
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  showTimer: PropTypes.bool,
 };
 
 export default Pulse;
