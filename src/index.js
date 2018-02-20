@@ -31,21 +31,24 @@ class Pulse extends React.Component {
     const date = new Date();
 
     // Send function when the state changes
-    this.props.onClickFunction;
-
-    if (!this.state.active) {
-      this.props.onChangeFunction;
-    } else {
-      this.props.onChangeFunction;
-    }
+    this.props.onClickFunction && this.props.onClickFunction(date.getTime());
 
     this.setState({
       active: this.state.active ? false : true,
     });
+
+    if (!this.state.active) {
+      this.props.onChangeFunction && this.props.onChangeFunction({ state: "active", time: date.getTime() });
+    } else {
+      this.props.onChangeFunction && this.props.onChangeFunction({ state: "inactive", time: date.getTime() });
+    }
   }
 
   sendPulse() {
-    global.pulse = setInterval(() => this.props.pulseFunction, (this.props.pulseTime * 1000));
+    global.pulse = setInterval(() => {
+      const date = new Date();
+      this.props.pulseFunction && this.props.pulseFunction({ state: "active", time: date.getTime() })
+    }, (this.props.pulseTime * 1000));
   }
 
   stopPulse() {
