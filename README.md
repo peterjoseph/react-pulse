@@ -45,4 +45,4 @@ Component Props
 | `onClickFunction` | function | undefined | Function that is called when the button is clicked. |
 | `onChangeFunction` | function | undefined | Function that is called when the state of the button changes. |
 | `disabled` | boolean | false | Boolean to control whether the button is disabled and cannot be clicked. |
-| `className` | string | undefined | String for specificying custom css classes to style the button. |
+| `className` | string | undefined | String for specifying custom css classes to style the button. |
