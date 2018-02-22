@@ -1,6 +1,6 @@
 # React-Pulse
 
-A react component that sends out a timed function call when pressed, at specified intervals.
+A react component that sends out a timed function call at specified intervals when pressed.
 
 React-Pulse is a button component with an inactive and active state. When the button has been clicked and is in the active state, the component makes a function call at timed intervals.
 
