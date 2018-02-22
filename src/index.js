@@ -61,7 +61,7 @@ class Pulse extends React.Component {
 
     active && global.pulse == null && this.sendPulse(); // When state is active, call function
 
-    return <button className={className} onClick={this.preparePulse} disabled={disabled}>
+    return <button className={className || "pulse-button"} onClick={this.preparePulse} disabled={disabled}>
       {active ? activeLabel : defaultLabel }
     </button>
   }
