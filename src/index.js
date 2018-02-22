@@ -7,7 +7,7 @@ class Pulse extends React.Component {
     super(props);
 
     this.state = {
-      active: false,
+      active: false
     };
 
     this.preparePulse = this.preparePulse.bind(this);
@@ -17,30 +17,29 @@ class Pulse extends React.Component {
 
   componentWillMount() {
     this.setState({
-      active: this.props.defaultActive == true ? true : false,
+      active: this.props.defaultActive === true || global.pulse != null ? true : false,
     });
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      active: nextProps.defaultActive == true ? true : false,
+      active: nextProps.defaultActive || global.pulse != null ? true : false,
     });
   }
 
   preparePulse() {
     const date = new Date();
 
-    // Send function when the state changes
+    // Send function when the button is clicked
     this.props.onClickFunction && this.props.onClickFunction(date.getTime());
 
-    this.setState({
-      active: this.state.active ? false : true,
-    });
-
-    if (!this.state.active) {
-      this.props.onChangeFunction && this.props.onChangeFunction({ state: "active", time: date.getTime() });
-    } else {
+    if (this.state.active) {
+      this.setState({active: false});
+      this.stopPulse();
       this.props.onChangeFunction && this.props.onChangeFunction({ state: "inactive", time: date.getTime() });
+    } else {
+      this.setState({active: true});
+      this.props.onChangeFunction && this.props.onChangeFunction({ state: "active", time: date.getTime() });
     }
   }
 
@@ -53,13 +52,14 @@ class Pulse extends React.Component {
 
   stopPulse() {
     clearInterval(global.pulse);
+    global.pulse = null;
   }
 
   render() {
     const { active } = this.state;
     const { defaultLabel, activeLabel, className, disabled } = this.props;
 
-    active ? this.sendPulse() : this.stopPulse(); // When state is active, call function
+    active && global.pulse == null && this.sendPulse(); // When state is active, call function
 
     return <button className={className} onClick={this.preparePulse} disabled={disabled}>
       {active ? activeLabel : defaultLabel }
@@ -83,7 +83,7 @@ Pulse.propTypes = {
   onClickFunction: PropTypes.func,
   onChangeFunction: PropTypes.func,
   disabled: PropTypes.bool,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Pulse;
