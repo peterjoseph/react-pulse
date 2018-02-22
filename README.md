@@ -9,11 +9,8 @@ The general use case, is if you need a way for your users to start and stop a re
 Installation
 -----
 
-Once the project is complete, it will be added to npm.
-
-Currently, you can download the files from GitHub and load them into your project using
 ```
-npm link react-pulse
+npm install react-pulse
 ```
 
 Dependencies
