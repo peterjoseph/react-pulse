@@ -28,7 +28,7 @@
     "pause",
     "pulse"
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/peterjoseph/react-pulse/issues"
   },
